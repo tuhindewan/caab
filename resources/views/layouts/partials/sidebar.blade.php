@@ -48,9 +48,9 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <router-link to="/admin/users" class="nav-link">
+                        <router-link to="/admin/employees" class="nav-link">
                             <i class="fas fa-users nav-icon"></i>
-                            <p>Users</p>
+                            <p>Employees</p>
                         </router-link>
                     </li>
                 </ul>

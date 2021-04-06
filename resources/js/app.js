@@ -9,11 +9,11 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Profile from './components/admin/Profile'
-import Users from './components/admin/Users'
+import Employees from './components/admin/Employees'
 
 const routes = [
     { path: '/admin/profile', component: Profile },
-    { path: '/admin/users', component: Users },
+    { path: '/admin/employees', component: Employees },
 ]
 
 const router = new VueRouter({
