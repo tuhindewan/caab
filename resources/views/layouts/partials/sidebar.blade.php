@@ -40,25 +40,19 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-cogs text-green"></i>
-                <p>
-                    Management
-                    <i class="right fas fa-angle-left"></i>
-                </p>
+                    <i class="nav-icon fas fa-cogs text-green"></i>
+                    <p>
+                        Management
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
                 </a>
                 <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="#" class="nav-link \">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Active Page</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Inactive Page</p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <router-link to="/admin/users" class="nav-link">
+                            <i class="fas fa-users nav-icon"></i>
+                            <p>Users</p>
+                        </router-link>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">
