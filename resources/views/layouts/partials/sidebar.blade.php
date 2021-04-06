@@ -62,10 +62,10 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <router-link to="/admin/profile" class="nav-link">
                     <i class="nav-icon fas fa-user text-yellow"></i>
                     <p>Profile</p>
-                </a>
+                </router-link>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
