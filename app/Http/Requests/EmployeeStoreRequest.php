@@ -28,7 +28,7 @@ class EmployeeStoreRequest extends FormRequest
             'designation' => 'required|string|max:191',
             'department' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
-            'mobile' => 'required|max:11|min:11|unique:users',
+            'mobile' => 'required|numeric|min:11|unique:employees',
             'roles' => 'required',
             'password' => 'required|string|min:6'
         ];

@@ -96,7 +96,7 @@
                                 <has-error :form="form" field="email"></has-error>
                             </div>
                             <div class="form-group">
-                                <input type="number" v-model="form.mobile" name="mobile" placeholder="Enter Mobile Number"
+                                <input type="text" v-model="form.mobile" name="mobile" placeholder="Enter Mobile Number"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('mobile') }">
                                 <has-error :form="form" field="mobile"></has-error>
                             </div>

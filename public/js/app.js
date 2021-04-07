@@ -38930,7 +38930,7 @@ var render = function() {
                             "is-invalid": _vm.form.errors.has("mobile")
                           },
                           attrs: {
-                            type: "number",
+                            type: "text",
                             name: "mobile",
                             placeholder: "Enter Mobile Number"
                           },
