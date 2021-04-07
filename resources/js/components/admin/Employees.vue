@@ -146,9 +146,14 @@
         },
         methods:{
             employeeCreate(){
+                this.$Progress.start()
                 this.form.post('api/employees')
-                .then()
-                .catch()
+                .then( () => {
+                    this.$Progress.finish()
+                 } )
+                .catch( () => {
+                    this.$Progress.fail()
+                 } )
             }
         },
         mounted() {

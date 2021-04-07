@@ -35,7 +35,7 @@ class EmployeeController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'username' => '01303454560',
+                'username' => $request->mobile,
                 'password' => Hash::make($request->password)
             ]);
 
