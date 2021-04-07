@@ -2003,7 +2003,8 @@ __webpack_require__.r(__webpack_exports__);
         roles: [],
         password: ''
       }),
-      roles: []
+      roles: [],
+      employees: {}
     };
   },
   methods: {
@@ -2022,17 +2023,28 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         _this.$Progress.fail();
       });
+    },
+    loadEmployeesList: function loadEmployeesList() {
+      var _this2 = this;
+
+      axios.get('api/employees').then(function (_ref) {
+        var data = _ref.data;
+        return _this2.employees = data.data;
+      });
+    },
+    getAllRoles: function getAllRoles() {
+      var _this3 = this;
+
+      axios.get('api/getAllRoles').then(function (response) {
+        _this3.roles = response.data;
+      })["catch"]();
     }
   },
-  mounted: function mounted() {
-    console.log('Component Mounted');
-  },
   created: function created() {
-    var _this2 = this;
+    //Get all roles
+    this.getAllRoles(); //Load employee list
 
-    axios.get('api/getAllRoles').then(function (response) {
-      _this2.roles = response.data;
-    })["catch"]();
+    this.loadEmployeesList();
   }
 });
 
@@ -42411,7 +42423,43 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body table-responsive p-0" }, [
+            _c("table", { staticClass: "table table-hover text-nowrap" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.employees, function(employee) {
+                  return _c("tr", { key: employee.id }, [
+                    _c("td", [_vm._v("183")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("John Doe")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Director")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("ATS")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Admin")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("director@gmail.com")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("01303454560")]),
+                    _vm._v(" "),
+                    _vm._m(2, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -42434,7 +42482,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
+              _vm._m(3),
               _vm._v(" "),
               _c(
                 "form",
@@ -42768,7 +42816,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(4)
                 ]
               )
             ])
@@ -42783,86 +42831,63 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Employees List")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-tools" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success",
-                  attrs: {
-                    "data-toggle": "modal",
-                    "data-target": "#addEmployee"
-                  }
-                },
-                [
-                  _vm._v("\n                    Add New\n                    "),
-                  _c("i", { staticClass: "fas fa-user-plus" })
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body table-responsive p-0" }, [
-            _c("table", { staticClass: "table table-hover text-nowrap" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", [_vm._v("Serial")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Designation")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Department")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Role")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Mobile")]),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Action")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", [_vm._v("183")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("John Doe")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Director")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("ATS")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Admin")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("director@gmail.com")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("01303454560")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("a", { attrs: { type: "button" } }, [
-                      _c("i", { staticClass: "fas fa-edit text-blue" })
-                    ]),
-                    _vm._v("\n                      /\n                      "),
-                    _c("a", { attrs: { type: "button" } }, [
-                      _c("i", { staticClass: "fas fa-trash text-red" })
-                    ]),
-                    _vm._v("\n                      /\n                      "),
-                    _c("a", { attrs: { type: "button" } }, [
-                      _c("i", { staticClass: "fas fa-eye text-cyan" })
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Employees List")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-tools" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            attrs: { "data-toggle": "modal", "data-target": "#addEmployee" }
+          },
+          [
+            _vm._v("\n                    Add New\n                    "),
+            _c("i", { staticClass: "fas fa-user-plus" })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Serial")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Designation")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Department")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Role")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Mobile")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { type: "button" } }, [
+        _c("i", { staticClass: "fas fa-edit text-blue" })
+      ]),
+      _vm._v("\n                      /\n                      "),
+      _c("a", { attrs: { type: "button" } }, [
+        _c("i", { staticClass: "fas fa-trash text-red" })
+      ]),
+      _vm._v("\n                      /\n                      "),
+      _c("a", { attrs: { type: "button" } }, [
+        _c("i", { staticClass: "fas fa-eye text-cyan" })
       ])
     ])
   },

@@ -19,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return Employee::latest()->paginate(10);
     }
 
     /**

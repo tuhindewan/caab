@@ -17,4 +17,9 @@ class Employee extends Model
         'mobile',
         'user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

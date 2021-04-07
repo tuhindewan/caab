@@ -28,7 +28,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr v-for="employee in employees" :key="employee.id">
                       <td>183</td>
                       <td>John Doe</td>
                       <td>Director</td>
@@ -142,6 +142,7 @@
                     password: '',
                 }),
                 roles:[],
+                employees: {}
             }
         },
         methods:{
@@ -159,17 +160,25 @@
                 .catch( () => {
                     this.$Progress.fail()
                  } )
+            },
+            loadEmployeesList(){
+                axios.get('api/employees')
+                .then( ( {data} ) => ( this.employees = data.data ) )
+            },
+            getAllRoles(){
+                axios.get('api/getAllRoles')
+                .then((response) => {
+                    this.roles = response.data
+                })
+                .catch()
             }
         },
-        mounted() {
-            console.log('Component Mounted')
-        },
         created(){
-            axios.get('api/getAllRoles')
-            .then((response) => {
-                this.roles = response.data
-            })
-            .catch()
+            //Get all roles
+            this.getAllRoles()
+
+            //Load employee list
+            this.loadEmployeesList()
         }
     }
 </script>
