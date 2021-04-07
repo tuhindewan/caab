@@ -21,21 +21,19 @@
                       <th>Name</th>
                       <th>Designation</th>
                       <th>Department</th>
-                      <th>Role</th>
                       <th>Email</th>
                       <th>Mobile</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="employee in employees" :key="employee.id">
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>Director</td>
-                      <td>ATS</td>
-                      <td>Admin</td>
-                      <td>director@gmail.com</td>
-                      <td>01303454560</td>
+                    <tr v-for="(employee, index) in employees" :key="employee.id">
+                      <td>{{ index+1 }}</td>
+                      <td>{{ employee.user.name }}</td>
+                      <td>{{ employee.designation }}</td>
+                      <td>{{ employee.department }}</td>
+                      <td>{{ employee.user.email }}</td>
+                      <td>{{ employee.mobile }}</td>
                       <td>
                           <a type="button">
                               <i class="fas fa-edit text-blue"></i>
@@ -110,11 +108,11 @@
                             <div class="help-block invalid-feedback">The name field is required.</div>
                             <has-error :form="form" field="roles"></has-error>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="password" v-model="form.password" name="password" placeholder="Enter Password"
                                     class="form-control" :class="{ 'is-invalid': form.errors.has('password') }">
                                 <has-error :form="form" field="password"></has-error>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
@@ -150,6 +148,7 @@
                 this.$Progress.start()
                 this.form.post('api/employees')
                 .then( () => {
+                    Fire.$emit('LoadEmployeeList')
                     $('#addEmployee').modal('hide')
                     Toast.fire({
                         icon: 'success',
@@ -179,6 +178,11 @@
 
             //Load employee list
             this.loadEmployeesList()
+
+            //Event listener
+            Fire.$on('LoadEmployeeList', () => {
+                this.loadEmployeesList()
+            })
         }
     }
 </script>

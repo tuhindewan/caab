@@ -30,7 +30,6 @@ class EmployeeStoreRequest extends FormRequest
             'email' => 'required|string|email|max:191|unique:users',
             'mobile' => 'required|numeric|min:11|unique:employees',
             'roles' => 'required',
-            'password' => 'required|string|min:6',
         ];
     }
 }

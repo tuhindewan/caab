@@ -63,6 +63,9 @@ window.Toast = Toast
 
 
 
+//Fire event
+window.Fire = new Vue()
+
 
 const app = new Vue({
     el: '#app',

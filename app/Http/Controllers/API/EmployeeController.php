@@ -19,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Employee::latest()->paginate(10);
+        return Employee::latest()->with('user')->paginate(10);
     }
 
     /**
@@ -36,7 +36,7 @@ class EmployeeController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'username' => $request->mobile,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make('123123')
             ]);
 
             if($user){
@@ -50,9 +50,8 @@ class EmployeeController extends Controller
             }
         });
 
-        // return $request->all();
         return response()->json([
-            'msg' => 'User info updated successfully'
+            'msg' => 'Employee created successfully'
         ]);
     }
 

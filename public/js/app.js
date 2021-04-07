@@ -1989,8 +1989,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2013,6 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$Progress.start();
       this.form.post('api/employees').then(function () {
+        Fire.$emit('LoadEmployeeList');
         $('#addEmployee').modal('hide');
         Toast.fire({
           icon: 'success',
@@ -2041,10 +2040,16 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
+    var _this4 = this;
+
     //Get all roles
     this.getAllRoles(); //Load employee list
 
-    this.loadEmployeesList();
+    this.loadEmployeesList(); //Event listener
+
+    Fire.$on('LoadEmployeeList', function () {
+      _this4.loadEmployeesList();
+    });
   }
 });
 
@@ -2150,7 +2155,9 @@ var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().mixin({
     toast.addEventListener('mouseleave', (sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().resumeTimer));
   }
 });
-window.Toast = Toast;
+window.Toast = Toast; //Fire event
+
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_0__.default();
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__.default({
   el: '#app',
   router: router
@@ -42434,21 +42441,19 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.employees, function(employee) {
+                _vm._l(_vm.employees, function(employee, index) {
                   return _c("tr", { key: employee.id }, [
-                    _c("td", [_vm._v("183")]),
+                    _c("td", [_vm._v(_vm._s(index + 1))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("John Doe")]),
+                    _c("td", [_vm._v(_vm._s(employee.user.name))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("Director")]),
+                    _c("td", [_vm._v(_vm._s(employee.designation))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("ATS")]),
+                    _c("td", [_vm._v(_vm._s(employee.department))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("Admin")]),
+                    _c("td", [_vm._v(_vm._s(employee.user.email))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v("director@gmail.com")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("01303454560")]),
+                    _c("td", [_vm._v(_vm._s(employee.mobile))]),
                     _vm._v(" "),
                     _vm._m(2, true)
                   ])
@@ -42769,50 +42774,6 @@ var render = function() {
                         })
                       ],
                       1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group" },
-                      [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.password,
-                              expression: "form.password"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          class: {
-                            "is-invalid": _vm.form.errors.has("password")
-                          },
-                          attrs: {
-                            type: "password",
-                            name: "password",
-                            placeholder: "Enter Password"
-                          },
-                          domProps: { value: _vm.form.password },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.form,
-                                "password",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("has-error", {
-                          attrs: { form: _vm.form, field: "password" }
-                        })
-                      ],
-                      1
                     )
                   ]),
                   _vm._v(" "),
@@ -42862,8 +42823,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Designation")]),
         _vm._v(" "),
         _c("th", [_vm._v("Department")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Role")]),
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
