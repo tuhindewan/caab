@@ -149,6 +149,11 @@
                 this.$Progress.start()
                 this.form.post('api/employees')
                 .then( () => {
+                    $('#addEmployee').modal('hide')
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Employee created successfully'
+                    })
                     this.$Progress.finish()
                  } )
                 .catch( () => {
