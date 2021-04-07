@@ -105,8 +105,7 @@
                                         multiple name="roles[]" v-model="form.roles" :class="{ 'is-invalid': form.errors.has('roles') }"
                                         title="Select Employee Role">
                                     <option style="display: none"></option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    <option v-for="role in roles" :key="role.id" v-bind:value="role.id">{{ role.name }}</option>
                             </select>
                             <div class="help-block invalid-feedback">The name field is required.</div>
                             <has-error :form="form" field="roles"></has-error>
@@ -141,7 +140,8 @@
                     mobile: '',
                     roles: [],
                     password: '',
-                })
+                }),
+                roles:[],
             }
         },
         methods:{
@@ -153,6 +153,13 @@
         },
         mounted() {
             console.log('Component Mounted')
+        },
+        created(){
+            axios.get('api/getAllRoles')
+            .then((response) => {
+                console.log(this.roles = response.data)
+            })
+            .catch()
         }
     }
 </script>

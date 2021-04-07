@@ -1991,7 +1991,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2003,7 +2002,8 @@ __webpack_require__.r(__webpack_exports__);
         mobile: '',
         roles: [],
         password: ''
-      })
+      }),
+      roles: []
     };
   },
   methods: {
@@ -2013,6 +2013,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Component Mounted');
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('api/getAllRoles').then(function (response) {
+      console.log(_this.roles = response.data);
+    })["catch"]();
   }
 });
 
@@ -38999,14 +39006,15 @@ var render = function() {
                           [
                             _c("option", { staticStyle: { display: "none" } }),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v("1")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v("2")
-                            ])
-                          ]
+                            _vm._l(_vm.roles, function(role) {
+                              return _c(
+                                "option",
+                                { key: role.id, domProps: { value: role.id } },
+                                [_vm._v(_vm._s(role.name))]
+                              )
+                            })
+                          ],
+                          2
                         ),
                         _vm._v(" "),
                         _c(

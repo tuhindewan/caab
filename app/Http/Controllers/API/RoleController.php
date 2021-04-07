@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EmployeeStoreRequest;
 use Illuminate\Http\Request;
+use Spatie\Permission\Contracts\Role;
+use Spatie\Permission\Models\Role as ModelsRole;
 
-class EmployeeController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,12 +25,9 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmployeeStoreRequest $request)
+    public function store(Request $request)
     {
-        return $request->all();
-        // return response()->json([
-        //     'msg' => 'User info updated successfully'
-        // ]);
+        //
     }
 
     /**
@@ -64,5 +62,11 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getAllRoles()
+    {
+        $roles = ModelsRole::all();
+        return $roles;
     }
 }

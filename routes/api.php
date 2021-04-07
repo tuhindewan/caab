@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\EmployeeController;
+use App\Http\Controllers\API\RoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'employees' => EmployeeController::class
+    'employees' => EmployeeController::class,
+    'roles' => RoleController::class,
 ]);
+
+Route::get('getAllRoles', [RoleController::class, 'getAllRoles']);
