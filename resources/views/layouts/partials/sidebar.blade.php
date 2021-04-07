@@ -48,7 +48,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <router-link to="/admin/employees" class="nav-link">
+                        <router-link to="/employees" class="nav-link">
                             <i class="fas fa-users nav-icon"></i>
                             <p>Employees</p>
                         </router-link>
@@ -56,7 +56,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <router-link to="/admin/profile" class="nav-link">
+                <router-link to="/profile" class="nav-link">
                     <i class="nav-icon fas fa-user text-yellow"></i>
                     <p>Profile</p>
                 </router-link>

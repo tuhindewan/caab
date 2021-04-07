@@ -12,8 +12,8 @@ import Profile from './components/admin/Profile'
 import Employees from './components/admin/Employees'
 
 const routes = [
-    { path: '/admin/profile', component: Profile },
-    { path: '/admin/employees', component: Employees },
+    { path: '/profile', component: Profile },
+    { path: '/employees', component: Employees },
 ]
 
 const router = new VueRouter({
