@@ -157,7 +157,7 @@
         created(){
             axios.get('api/getAllRoles')
             .then((response) => {
-                console.log(this.roles = response.data)
+                this.roles = response.data
             })
             .catch()
         }

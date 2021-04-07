@@ -15,7 +15,6 @@ class Employee extends Model
         'designation',
         'department',
         'mobile',
-        'signature',
-        'seal'
+        'user_id'
     ];
 }

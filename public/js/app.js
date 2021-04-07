@@ -2018,7 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('api/getAllRoles').then(function (response) {
-      console.log(_this.roles = response.data);
+      _this.roles = response.data;
     })["catch"]();
   }
 });

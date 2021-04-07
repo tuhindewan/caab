@@ -18,8 +18,8 @@ class CreateEmployeesTable extends Migration
             $table->string('designation');
             $table->string('department');
             $table->string('mobile');
-            $table->string('signature');
-            $table->string('seal');
+            $table->string('signature')->nullable();
+            $table->string('seal')->nullable();
             $table->boolean('status')->default(1);
             $table->foreignId('user_id')->constrained()
                     ->onUpdate('cascade')->onDelete('cascade');
